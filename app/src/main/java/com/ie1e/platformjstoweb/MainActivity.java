@@ -7,13 +7,23 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
+import com.ie1e.platformjstoweb.AliPay.AliPay;
+import com.ie1e.platformjstoweb.Application.MyApplication;
 import com.ie1e.platformjstoweb.JsAndJavaInteractive.JsAndJavaInteractive;
+import com.ie1e.platformjstoweb.utils.VolleyListenerInterface;
+import com.ie1e.platformjstoweb.utils.VolleyUtils;
+import com.tencent.mm.sdk.modelpay.PayReq;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * 首页
@@ -21,7 +31,7 @@ import com.ie1e.platformjstoweb.JsAndJavaInteractive.JsAndJavaInteractive;
  */
 public class MainActivity extends Activity {
 
-    private WebView mWebView;
+    public static WebView mWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,8 +105,8 @@ public class MainActivity extends Activity {
          */
         mWebView.addJavascriptInterface(new JsAndJavaInteractive(MainActivity.this), "stub");
         //默认页面
-//        mWebView.loadUrl("file:///android_asset/js_interact_demo.html");
-        mWebView.loadUrl("www.ie9e.com");
+        mWebView.loadUrl("file:///android_asset/test.html");
+ //       mWebView.loadUrl("http://www.ie9e.com");
     }
 
     @Override
@@ -107,6 +117,49 @@ public class MainActivity extends Activity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+    public  class  DemoJavaScriptInterface {
+        @JavascriptInterface //SDK17版本以上加上注解
+        /**
+         *  name  商品名称
+         *  content 商品详细描述
+         *  price 商品价格 单位:元
+         */
+        public void clickAliPay(String name, String content, String price) {
+            AliPay pay = new AliPay(MainActivity.this);
+            pay.pay(name, content, price);
+        }
+
+        //微信支付测试接口
+        @JavascriptInterface //SDK17版本以上加上注解
+        public void clickWxPay()
+        {
+            VolleyUtils.RequestGet(MainActivity.this, "http://wxpay.weixin.qq.com/pub_v2/app/app_pay.php?plat=android", new VolleyListenerInterface(MainActivity.this,VolleyListenerInterface.mListener,VolleyListenerInterface.mErrorListener) {
+                @Override
+                public void onMySuccess(String result) {
+                    try {
+                        JSONObject json = new JSONObject(result);
+                        PayReq req = new PayReq();
+                        req.appId = json.getString("appid");
+                        req.partnerId = json.getString("partnerid");
+                        req.packageValue = json.getString("package");
+                        req.nonceStr = json.getString("noncestr");
+                        req.timeStamp = json.getString("timestamp");
+                        req.prepayId = json.getString("prepayid");
+                        req.sign = json.getString("sign");
+                        req.extData = "app data";
+                        MyApplication.getApi().sendReq(req);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                @Override
+                public void onMyError(VolleyError error) {
+                }
+            });
+        }
+
+
     }
 
 }
