@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.ie1e.platformjstoweb.param.Constant;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
@@ -25,6 +26,7 @@ public class MyApplication extends Application{
     public void onCreate() {
         super.onCreate();
         this.context = getApplicationContext();
+        volleyQueue = Volley.newRequestQueue(getApplicationContext());
         regToWx();
 
     }
