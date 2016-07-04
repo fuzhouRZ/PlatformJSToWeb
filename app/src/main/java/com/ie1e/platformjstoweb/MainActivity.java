@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.ie1e.platformjstoweb.AliPay.AliPay;
 import com.ie1e.platformjstoweb.Application.MyApplication;
+import com.ie1e.platformjstoweb.JsAndJavaInteractive.JsAndJavaInteractive;
 import com.ie1e.platformjstoweb.utils.VolleyListenerInterface;
 import com.ie1e.platformjstoweb.utils.VolleyUtils;
 import com.tencent.mm.sdk.modelpay.PayReq;
@@ -102,7 +103,7 @@ public class MainActivity extends Activity {
                           调用示例：
             mWebView.loadUrl("javascript:window.stub.jsMethod('param')");
          */
-        mWebView.addJavascriptInterface(new DemoJavaScriptInterface(), "demo");
+        mWebView.addJavascriptInterface(new JsAndJavaInteractive(MainActivity.this), "demo");
         //默认页面
         mWebView.loadUrl("file:///android_asset/test.html");
  //       mWebView.loadUrl("http://www.ie9e.com");
