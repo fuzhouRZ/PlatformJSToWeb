@@ -8,7 +8,7 @@ public class Constant {
     /**
      * 微信信息
      */
-    public    static final String APP_ID  = "wxf8b4f85f3a794e77";
+    public static final String APP_ID = "wxf8b4f85f3a794e77";
 
     /**
      * 支付宝信息
@@ -22,5 +22,10 @@ public class Constant {
     // 支付宝公钥
     public static final String RSA_PUBLIC = "";
     private static final int SDK_PAY_FLAG = 1;
+
+    //QQ登录信息
+    public static final String TENCENT_APP_ID = "1105438513";
+    //微信登录信息
+    public static final String WEIXIN_APP_ID = "3352225197";
 
 }

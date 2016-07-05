@@ -1,14 +1,23 @@
 package com.ie1e.platformjstoweb.JsAndJavaInteractive;
 
+import android.app.Activity;
 import android.content.Context;
 import android.webkit.JavascriptInterface;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.ie1e.platformjstoweb.AliPay.AliPay;
 import com.ie1e.platformjstoweb.Application.MyApplication;
+import com.ie1e.platformjstoweb.param.Constant;
 import com.ie1e.platformjstoweb.utils.VolleyListenerInterface;
 import com.ie1e.platformjstoweb.utils.VolleyUtils;
+import com.tencent.mm.sdk.modelmsg.SendAuth;
 import com.tencent.mm.sdk.modelpay.PayReq;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +53,7 @@ public class JsAndJavaInteractive {
      * 微信授权登录
      * */
     @JavascriptInterface //sdk17版本以上加上注解
-    public void funWeiXinOauth2Login(String params){
+    public void funWeiXinOauth2Login(){
 
     }
 
@@ -52,8 +61,9 @@ public class JsAndJavaInteractive {
      * QQ授权登录
      * */
     @JavascriptInterface //sdk17版本以上加上注解
-    public void funQQOauth2Login(String params){
-
+    public void funQQOauth2Login(){
+        Tencent tencent = Tencent.createInstance(Constant.TENCENT_APP_ID,mContxt);
+        tencent.login((Activity) mContxt,"all",new BaseIUiListener());
     }
 
     /**
@@ -101,6 +111,24 @@ public class JsAndJavaInteractive {
     public void funPayFromAli(String name,String content,String price){
         AliPay pay = new AliPay(mContxt);
         pay.pay(name, content, price);
+    }
+
+    class BaseIUiListener implements IUiListener
+    {
+        @Override
+        public void onComplete(Object o) {
+
+        }
+
+        @Override
+        public void onCancel() {
+
+        }
+
+        @Override
+        public void onError(UiError uiError) {
+
+        }
     }
 
 

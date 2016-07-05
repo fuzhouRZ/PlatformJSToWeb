@@ -13,7 +13,7 @@ import com.tencent.mm.sdk.openapi.WXAPIFactory;
  * 作者：zf on 2016/7/4 16:22
  * 邮箱：752323877@qq.com
  */
-public class MyApplication extends Application{
+public class MyApplication extends Application {
 
     public static IWXAPI api;
 
@@ -28,23 +28,31 @@ public class MyApplication extends Application{
         this.context = getApplicationContext();
         volleyQueue = Volley.newRequestQueue(getApplicationContext());
         regToWx();
+        regToWxLogin();
 
     }
-    private void regToWx()
-    {
+
+    private void regToWx() {
         //通过WXAPIFactory工厂,获取IWXAPI的实例
-        api = WXAPIFactory.createWXAPI(this, Constant.APP_ID,true);
+        api = WXAPIFactory.createWXAPI(this, Constant.APP_ID, true);
         //将应用的appId注册到微信
         api.registerApp(Constant.APP_ID);
     }
-    public static IWXAPI getApi()
-    {
-        return  api;
+    private void regToWxLogin() {
+        //通过WXAPIFactory工厂,获取IWXAPI的实例
+        api = WXAPIFactory.createWXAPI(this, Constant.WEIXIN_APP_ID, true);
+        //将应用的appId注册到微信
+        api.registerApp(Constant.WEIXIN_APP_ID);
     }
-    public static Context getContext()
-    {
+
+    public static IWXAPI getApi() {
+        return api;
+    }
+
+    public static Context getContext() {
         return context;
     }
+
     public static RequestQueue getRequestQueue() {
         return volleyQueue;
     }
