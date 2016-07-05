@@ -26,11 +26,11 @@ import java.util.Random;
  */
 public class AliPay {
     // 商户PID
-    public static final String PARTNER = "2088121197350513";
+    public static final String PARTNER = "2088411429951961";
     // 商户收款账号
-    public static final String SELLER = "wsjtianziyihao@163.com";
+    public static final String SELLER = "zrzxz321@163.com";
     // 商户私钥，pkcs8格式
-    public static final String RSA_PRIVATE = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBANfNlQhn/yLGQxAkvyYuNwagfJxLk245uLxpAMtXClXqnFR0IR5xeGcvz69nCmQquveu9ntTE2cvZ88weiTfKFHmm1xi0e9mg99kSZmhCTBySossaWvHLQFeO8x4SSQGwTqA+6cSIVBoxslgEOyELbxVs+uUjUqyRnKW4YVCM7JJAgMBAAECgYEAhv/+qWGVhAWPUnwKcDIdDjI7gfLtadkGLidp7cqnlpPL9DEpvsexUKviOpI1N/BbQjLb0s5npvdK85wZ7RMFPwCt/ZjSxOM7OUzPQ6v3hpbD0uHyVF5ajXhlr9HPJr8Sef98JQWnB6vMt7jq1balOlyWwVOPUr26/6s8WZbj1RkCQQD1l2iwo9KNUDibS0wObh3JE/jxYCgWOZDd4qRjUe+UD9s4nFi9SLqvu+E2Z/TXgrZxuTT3f3FVBlebVgSyKQvrAkEA4PL6fBDHekbRYgXbAj6khhsMh/UOYurmAut+lG3HZdWrWZFk0wdVTWo/FZmj58t5Xz7ZxDODIz5MX3CMC1SxmwJBAMf2pO4WJUycQcrn7yBctnHPikV2Zo1aB8MyU2jvAOQMWRFp87MC8cY+cqwqzqderZBBHYhbQvrYtCItUpuBYksCQE7TNg0FgDEL4dE8hgsaUmKf1dtKdvkYoPMC/H8cnNPFdN7VAQSlvDF9eo+iH/pYpbZHet2yw1A1Q2PqN1i9G+MCQCseNODincHXrCezcJ6UeM4hxoJC3JlGJanlE/DIE57qERFDna4Z9Q7CjEqtP8lsFLJJ2HgSQK27E3ZV/3GRqIc=";
+    public static final String RSA_PRIVATE = "MIICeQIBADANBgkqhkiG9w0BAQEFAASCAmMwggJfAgEAAoGBAMao1a8kMsXmrHrVOO8b7T6DteyIZ54d4xvlwFCaHXQm1k14/Iu2orhm512n/38BE4G2Rlawmvf5h4C+6UiSTvnJa1ISZ88gmwnEtLLHfDO1Ku4uF4x/OIM9CbiQiMdnLsn9p9WiupmsPqNKs5X1lHE4IXlPPv2S+8QfZ9KR7oTpAgMBAAECgYEAsRCY7PMZohSZFR5pEY3Vpoukof9uQ5sl6p6cC/thVz6qcgDtL+YIIM3vWCW970hZR5rcFLZyWaV55gHDUeC+LAbgHXI2FVIdCchU9rvTeJ0VfmAWvBaBrzbA4Wa2O3pluTYVZvpAWIYBLNhN8nz+BafceK1uh6hHnnWt0B6eUFECQQD6nyG5ukJylHUzaqnHiP907oafCWW0PxAke1I2Nqg+pWxLkmtlVvi7qP+DYEMzj6kchl12u00kjUE74REJFB6tAkEAyuw7oDDOPy4FCmTxpnqHFXCFLZulnXZWRQ1fFXnyCFCfOrMGkpJ0BWhTERpUImBZPNjlgIq2zfLtiabI6bgyrQJBANxkVCQfx487PlWY1vTBZORPXdM9UFLRokBysjk6l3l/v1w1xnu3n8RnOUsuu+n7y5tqDYb77zrVfShLI8/4AYECQQCWWPNQm/ikDQfFDMeSbmQZuXWjNhg+E4iVvvN9KQ3vpTRkvHIZNRNrUkGBgX1mvvY/RAC+/Ye2DdB7Vay0pjo9AkEA23EYAydITK8On5xeIoA+daSf35I4ZqualzCZumd5WtBbcYQa8weyUwzTopparmQQpRmEYITpJD28SxfCNtzyTg==";
     // 支付宝公钥
     public static final String RSA_PUBLIC = "";
     private static final int SDK_PAY_FLAG = 1;
