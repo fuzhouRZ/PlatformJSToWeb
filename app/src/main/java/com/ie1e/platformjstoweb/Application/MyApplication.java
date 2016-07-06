@@ -2,6 +2,8 @@ package com.ie1e.platformjstoweb.Application;
 
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -27,7 +29,7 @@ public class MyApplication extends Application {
         super.onCreate();
         this.context = getApplicationContext();
         volleyQueue = Volley.newRequestQueue(getApplicationContext());
-        regToWx();
+//        regToWx();
         regToWxLogin();
 
     }
@@ -38,11 +40,21 @@ public class MyApplication extends Application {
         //将应用的appId注册到微信
         api.registerApp(Constant.APP_ID);
     }
+
     private void regToWxLogin() {
         //通过WXAPIFactory工厂,获取IWXAPI的实例
-        api = WXAPIFactory.createWXAPI(this, Constant.WEIXIN_APP_ID, true);
-        //将应用的appId注册到微信
-        api.registerApp(Constant.WEIXIN_APP_ID);
+        if (api == null) {
+            api = WXAPIFactory.createWXAPI(this, Constant.WEIXIN_APP_ID, true);
+            //将应用的appId注册到微信
+            api.registerApp(Constant.WEIXIN_APP_ID);
+        }
+
+        //判断手机是否安装微信
+        if (!api.isWXAppInstalled()) {
+            Toast.makeText(context, "请先安装微信应用", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
     }
 
     public static IWXAPI getApi() {

@@ -25,7 +25,12 @@ public class Constant {
 
     //QQ登录信息
     public static final String TENCENT_APP_ID = "1105438513";
+    public static final String TENCENT_APP_KEY = "LKl2lvyM2J6MQK7X";
     //微信登录信息
-    public static final String WEIXIN_APP_ID = "3352225197";
+    public static final String WEIXIN_APP_ID = "wxf29c641a8a07f5ac";
+    public static final String WEIXIN_APP_SECRET = "b8305b0b592ced333ebc2bf60435a0bf";
+
+    public static String WEIXIN_CODE = "";
+
 
 }

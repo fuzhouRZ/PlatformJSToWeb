@@ -105,8 +105,7 @@ public class MainActivity extends Activity {
          */
         mWebView.addJavascriptInterface(new JsAndJavaInteractive(MainActivity.this), "demo");
         //默认页面
-//        mWebView.loadUrl("file:///android_asset/test.html");
-        mWebView.loadUrl("file:///android_asset/qq.html");
+        mWebView.loadUrl("file:///android_asset/test.html");
  //       mWebView.loadUrl("http://www.ie9e.com");
     }
 

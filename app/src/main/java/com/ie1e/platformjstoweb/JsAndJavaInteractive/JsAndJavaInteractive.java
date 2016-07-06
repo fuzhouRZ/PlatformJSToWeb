@@ -35,50 +35,49 @@ public class JsAndJavaInteractive {
 
     /**
      * 分享至微信
-     * */
+     */
     @JavascriptInterface //sdk17版本以上加上注解
-    public void funShareWeiXin(String params){
+    public void funShareWeiXin(String params) {
 
     }
 
     /**
      * 分享新浪微博
-     * */
+     */
     @JavascriptInterface //sdk17版本以上加上注解
-    public void funShareWeiBo(String params){
+    public void funShareWeiBo(String params) {
 
     }
 
     /**
      * 微信授权登录
-     * */
+     */
     @JavascriptInterface //sdk17版本以上加上注解
-    public void funWeiXinOauth2Login(){
+    public void funWeiXinOauth2Login() {
+        final SendAuth.Req req = new SendAuth.Req();
+        req.scope = "snsapi_userinfo";
+        req.state = "platformjstoweb";
+        //发送认证请求
+        MyApplication.getApi().sendReq(req);
+
 
     }
 
     /**
      * QQ授权登录
-     * */
+     */
     @JavascriptInterface //sdk17版本以上加上注解
-    public void funQQOauth2Login(){
-        Tencent tencent = Tencent.createInstance(Constant.TENCENT_APP_ID,mContxt);
-        tencent.login((Activity) mContxt,"all",new BaseIUiListener());
+    public void funQQOauth2Login() {
+        Tencent tencent = Tencent.createInstance(Constant.TENCENT_APP_ID, mContxt);
+        tencent.login((Activity) mContxt, "all", new BaseIUiListener());
     }
 
-    /**
-     * 新浪微博授权登录
-     * */
-    @JavascriptInterface //sdk17版本以上加上注解
-    public void funWeiBoOauth2Login(String params){
-
-    }
     /**
      * 微信支付
-     * */
+     */
     @JavascriptInterface //sdk17版本以上加上注解
-    public void funPayFromWeiXin(){
-        VolleyUtils.RequestGet(mContxt, "http://wxpay.weixin.qq.com/pub_v2/app/app_pay.php?plat=android", new VolleyListenerInterface(mContxt,VolleyListenerInterface.mListener,VolleyListenerInterface.mErrorListener) {
+    public void funPayFromWeiXin() {
+        VolleyUtils.RequestGet(mContxt, "http://wxpay.weixin.qq.com/pub_v2/app/app_pay.php?plat=android", new VolleyListenerInterface(mContxt, VolleyListenerInterface.mListener, VolleyListenerInterface.mErrorListener) {
             @Override
             public void onMySuccess(String result) {
                 try {
@@ -97,6 +96,7 @@ public class JsAndJavaInteractive {
                     e.printStackTrace();
                 }
             }
+
             @Override
             public void onMyError(VolleyError error) {
             }
@@ -106,18 +106,18 @@ public class JsAndJavaInteractive {
 
     /**
      * 支付宝支付
-     * */
+     */
     @JavascriptInterface //sdk17版本以上加上注解
-    public void funPayFromAli(String name,String content,String price){
+    public void funPayFromAli(String name, String content, String price) {
         AliPay pay = new AliPay(mContxt);
         pay.pay(name, content, price);
     }
 
-    class BaseIUiListener implements IUiListener
-    {
+    class BaseIUiListener implements IUiListener {
         @Override
-        public void onComplete(Object o) {
-
+        public void onComplete(Object response) {
+            //json是用户信息数据
+            JSONObject json = (JSONObject) response;
         }
 
         @Override
