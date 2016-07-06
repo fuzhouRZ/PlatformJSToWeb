@@ -4,17 +4,23 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <script type="text/javascript">
     function AliPayToJs(param) {
-        document.getElementById("content").innerHTML = "结果:"+param;
+        document.getElementById("content").innerHTML = "支付结果:"+param;
     }
-  </script>
+    function LoginToJs(param) {
+        document.getElementById("content").innerHTML = "登录结果:"+param;
+    }
+
+    </script>
 </head>
 <body>
 <p id="content"></p>
 <p>
-    <input type="button"  value="调用支付宝支付"  onclick="window.demo.funPayFromAli('测试商品名称','测试商品描述','0.01')"/>
+    <input type="button" value="调用支付宝支付"
+           onclick="window.demo.funPayFromAli('测试商品名称','测试商品描述','0.01')"/>
     <input type="button" value="调用微信支付" onclick="window.demo.funPayFromWeiXin()"/>
-    <input type="button"  value="QQ登录"  onclick="window.demo.funQQOauth2Login()"/>
-    <input type="button" value="微信登录" onclick="window.demo.funWeiXinOauth2Login()" />
+    <input type="button" value="QQ登录" onclick="window.demo.funQQOauth2Login()"/>
+    <input type="button" value="微信登录" onclick="window.demo.funWeiXinOauth2Login()"/>
+    <input type="button" value="微信分享" onclick="window.demo.funWeiXinOauth2Login()"/>
 </p>
 </body>
 </html>

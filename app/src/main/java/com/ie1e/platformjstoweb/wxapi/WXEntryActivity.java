@@ -100,7 +100,8 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
                     @Override
                     public void run() {
 
-                        MainActivity.mWebView.loadUrl("javascript:AliPayToJs('登录成功')");
+                        tv_weixin.setText("登录成功");
+                        MainActivity.mWebView.loadUrl("javascript:LoginToJs('登录成功')");
                     }
                 });
                 break;
@@ -108,7 +109,8 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
                 MainActivity.mWebView.post(new Runnable() {
                     @Override
                     public void run() {
-                        MainActivity.mWebView.loadUrl("javascript:AliPayToJs('登录取消')");
+                        tv_weixin.setText("登录取消");
+                        MainActivity.mWebView.loadUrl("javascript:LoginToJs('登录取消')");
                     }
                 });
                 break;
@@ -116,7 +118,8 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
                 MainActivity.mWebView.post(new Runnable() {
                     @Override
                     public void run() {
-                        MainActivity.mWebView.loadUrl("javascript:AliPayToJs('登录被拒绝')");
+                        tv_weixin.setText("登录被拒绝");
+                        MainActivity.mWebView.loadUrl("javascript:LoginToJs('登录被拒绝')");
                     }
                 });
                 break;
@@ -124,7 +127,8 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
                 MainActivity.mWebView.post(new Runnable() {
                     @Override
                     public void run() {
-                        MainActivity.mWebView.loadUrl("javascript:AliPayToJs('登录失败')");
+                        tv_weixin.setText("登录失败");
+                        MainActivity.mWebView.loadUrl("javascript:LoginToJs('登录失败')");
                     }
                 });
                 break;
